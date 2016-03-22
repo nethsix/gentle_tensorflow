@@ -1,3 +1,6 @@
+import numpy as np
+import tensorflow as tf
+
 # Model linear regression y = Wx + b
 x = tf.placeholder(tf.float32, [None, 1])
 W = tf.Variable(tf.zeros([1,1]))
