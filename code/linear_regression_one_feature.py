@@ -13,7 +13,7 @@ y_ = tf.placeholder(tf.float32, [None, 1])
 cost = tf.reduce_sum(tf.pow((y_-y), 2))
 
 # Training using Gradient Descent to minimize cost
-train_step = tf.train.GradientDescentOptimizer(0.00001).minimize(cost)
+train_step = tf.train.GradientDescentOptimizer(0.0000001).minimize(cost)
 
 sess = tf.Session()
 init = tf.initialize_all_variables()
