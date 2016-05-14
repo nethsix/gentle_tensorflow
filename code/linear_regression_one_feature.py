@@ -10,7 +10,7 @@ y = product + b
 y_ = tf.placeholder(tf.float32, [None, 1])
 
 # Cost function sum((y_-y)**2)
-cost = tf.reduce_sum(tf.pow((y_-y), 2))
+cost = tf.reduce_mean(tf.square(y_-y))
 
 # Training using Gradient Descent to minimize cost
 train_step = tf.train.GradientDescentOptimizer(0.0000001).minimize(cost)
