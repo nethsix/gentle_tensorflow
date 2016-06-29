@@ -5,9 +5,10 @@ import tensorflow as tf
 datapoint_size = 1000
 batch_size = 1
 steps = 10000
+actual_W = 2
 actual_b = 10
-learn_rate = 0.0000001
-log_file = "/tmp/mnist_batch_1_with_b10_big_xes_grad_desc_logs_20160425b"
+learn_rate = 0.001
+log_file = "/tmp/feature_1_batch_1"
 
 # Model linear regression y = Wx + b
 x = tf.placeholder(tf.float32, [None, 1], name="x")
@@ -38,7 +39,7 @@ all_ys = []
 for i in range(datapoint_size):
   # Create fake data for y = W.x + b where W = 2, b = actual_b
   all_xs.append(i%10)
-  all_ys.append(2*(i%10)+actual_b)
+  all_ys.append(actual_W*(i%10)+actual_b)
 
 all_xs = np.transpose([all_xs])
 all_ys = np.transpose([all_ys])
@@ -79,4 +80,4 @@ for i in range(steps):
   print("W: %f" % sess.run(W))
   print("b: %f" % sess.run(b))
 
-# NOTE: W should be close to 2, and b should be close to 0
+# NOTE: W should be close to actual_W, and b should be close to actual_b
