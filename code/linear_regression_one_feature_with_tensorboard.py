@@ -46,6 +46,7 @@ for i in range(steps):
   print("After %d iteration:" % i)
   print("W: %f" % sess.run(W))
   print("b: %f" % sess.run(b))
+  print("cost: %f" % sess.run(cost, feed_dict=feed))
   # Record summary data, and the accuracy every 10 steps
   if i % 10 == 0:
     result = sess.run(merged, feed_dict=feed)

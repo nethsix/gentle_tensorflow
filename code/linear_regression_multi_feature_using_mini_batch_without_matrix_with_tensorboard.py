@@ -79,18 +79,18 @@ for i in range(steps):
   x1s = np.array(batch_x1s)
   x2s = np.array(batch_x2s)
   ys = np.array(batch_ys)
+  all_feed = { x1: all_x1s, x2: all_x2s, y_: all_ys }
   # Record summary data, and the accuracy every 10 steps
   if i % 10 == 0:
-    all_feed = { x1: all_x1s, x2: all_x2s, y_: all_ys }
     result = sess.run(merged, feed_dict=all_feed)
     writer.add_summary(result, i)
   else:
     feed = { x1: x1s, x2: x2s, y_: ys }
     sess.run(train_step, feed_dict=feed)
-    #  print("cost: %f" % sess.run(cost, feed_dict=feed))
   print("After %d iteration:" % i)
   print("W1: %s" % sess.run(W1))
   print("W2: %s" % sess.run(W2))
   print("b: %f" % sess.run(b))
+  print("cost: %f" % sess.run(cost, feed_dict=all_feed))
 
 # NOTE: W1, W2 should be close to actual_W1, actual_W2, and b should be close to actual_b
