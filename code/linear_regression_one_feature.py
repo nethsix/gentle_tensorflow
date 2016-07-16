@@ -29,5 +29,7 @@ for i in range(steps):
   print("After %d iteration:" % i)
   print("W: %f" % sess.run(W))
   print("b: %f" % sess.run(b))
+  # Suggested by @jihobak
+  print("cost: %f" % sess.run(cost, feed_dict=feed))
 
 # NOTE: W should be close to 2, and b should be close to 0
