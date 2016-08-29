@@ -4,6 +4,13 @@
 
 Tensorflow (TF) is Google’s attempt to put the power of Deep Learning into the hands of developers around the world. It comes with a beginner & an advanced tutorial, as well as a course on Udacity. However, the materials attempt to introduce both ML and TF concurrently to solve a multi-feature problem — character recognition, which albeit interesting, unnecessarily convolutes understanding. Gentlest Tensorflow attempts to overcome that by showing how to do linear regression for a single feature problem, and expand from there.
 
+## Cheatsheet
+
+* cheatsheets/tensorflow_cheatsheet_1.png
+  * Linear regression: single feature, single scalar outcome
+  * Linear regression: multi-feature, single scalar outcome
+  * Logistic regression: multi-feature, multi-class outcome
+
 ## Code
 
 All the code are in `/code` directory:
