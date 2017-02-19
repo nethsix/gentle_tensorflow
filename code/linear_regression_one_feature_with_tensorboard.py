@@ -1,4 +1,5 @@
 import numpy as np
+import random
 import tensorflow as tf
 
 # Model linear regression y = Wx + b
@@ -29,18 +30,22 @@ sess = tf.Session()
 
 # Merge all the summaries and write them out to logfile
 merged = tf.merge_all_summaries()
-writer = tf.train.SummaryWriter("/tmp/mnist_sgd_logs_20160404", sess.graph_def)
+writer = tf.train.SummaryWriter("/tmp/mnist_sgd_logs_20170219a", sess.graph_def)
 
 init = tf.initialize_all_variables()
 sess.run(init)
 
-steps = 1000
+steps = 5000
+
+# Create fake data for y = W.x + b where W = 2, b = 0
+datapoints = [ (i, 2*i) for i in range(steps) ]
+random.shuffle(datapoints)
 
 # Train
 for i in range(steps):
-  # Create fake data for y = W.x + b where W = 2, b = 0
-  xs = np.array([[i]])
-  ys = np.array([[2*i]])
+  _x, _y = datapoints[i]
+  xs = np.array([[_x]])
+  ys = np.array([[_y]])
   feed = { x: xs, y_: ys }
   sess.run(train_step, feed_dict=feed)
   print("After %d iteration:" % i)

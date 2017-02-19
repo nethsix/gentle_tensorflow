@@ -1,4 +1,5 @@
 import numpy as np
+import random
 import tensorflow as tf
 
 # Model linear regression y = Wx + b
@@ -18,12 +19,17 @@ train_step = tf.train.GradientDescentOptimizer(0.0000001).minimize(cost)
 sess = tf.Session()
 init = tf.initialize_all_variables()
 sess.run(init)
-steps = 1000
+steps = 5000
+
+# Create fake data for y = W.x + b where W = 2, b = 0
+datapoints = [ (i, 2*i) for i in range(steps) ]
+random.shuffle(datapoints)
+
 for i in range(steps):
-  # Create fake data for y = W.x + b where W = 2, b = 0
-  xs = np.array([[i]])
-  ys = np.array([[2*i]])
   # Train
+  _x, _y = datapoints[i]
+  xs = np.array([[_x]])
+  ys = np.array([[_y]])
   feed = { x: xs, y_: ys }
   sess.run(train_step, feed_dict=feed)
   print("After %d iteration:" % i)
