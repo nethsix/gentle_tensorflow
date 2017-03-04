@@ -20,16 +20,16 @@ with tf.name_scope("Wx_b") as scope:
   y = product + b
 
 # Add summary ops to collect data
-W_hist = tf.histogram_summary("weights", W)
-b_hist = tf.histogram_summary("biases", b)
-y_hist = tf.histogram_summary("y", y)
+W_hist = tf.summary.histogram("weights", W)
+b_hist = tf.summary.histogram("biases", b)
+y_hist = tf.summary.histogram("y", y)
 
 y_ = tf.placeholder(tf.float32, [None, 1])
 
 # Cost function sum((y_-y)**2)
 with tf.name_scope("cost") as scope:
   cost = tf.reduce_mean(tf.square(y_-y))
-  cost_sum = tf.scalar_summary("cost", cost)
+  cost_sum = tf.summary.scalar("cost", cost)
 
 # Training using Gradient Descent to minimize cost
 with tf.name_scope("train") as scope:
@@ -52,8 +52,8 @@ all_ys = np.transpose([all_ys])
 sess = tf.Session()
 
 # Merge all the summaries and write them out to /tmp/mnist_logs
-merged = tf.merge_all_summaries()
-writer = tf.train.SummaryWriter(log_file, sess.graph_def)
+merged = tf.summary.merge_all()
+writer = tf.summary.FileWriter(log_file, sess.graph_def)
 
 init = tf.initialize_all_variables()
 sess.run(init)
