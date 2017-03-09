@@ -29,7 +29,7 @@ sess = tf.Session()
 
 # Merge all the summaries and write them out to logfile
 merged = tf.summary.merge_all()
-writer = tf.train.SummaryWriter("/tmp/mnist_sgd_logs_20160404", sess.graph_def)
+writer = tf.summary.FileWriter("/tmp/mnist_sgd_logs_20160404", sess.graph_def)
 
 init = tf.initialize_all_variables()
 sess.run(init)
