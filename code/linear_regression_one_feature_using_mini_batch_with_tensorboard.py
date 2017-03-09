@@ -19,9 +19,9 @@ with tf.name_scope("Wx_b") as scope:
   y = product + b
 
 # Add summary ops to collect data
-W_hist = tf.histogram_summary("weights", W)
-b_hist = tf.histogram_summary("biases", b)
-y_hist = tf.histogram_summary("y", y)
+W_hist = tf.summary.histogram("weights", W)
+b_hist = tf.summary.histogram("biases", b)
+y_hist = tf.summary.histogram("y", y)
 
 y_ = tf.placeholder(tf.float32, [None, 1], name="y_")
 
