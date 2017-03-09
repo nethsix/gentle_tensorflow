@@ -19,7 +19,7 @@ y_ = tf.placeholder(tf.float32, [None, 1], name="y-input")
 # Cost function sum((y_-y)**2)
 with tf.name_scope("cost") as scope:
   cost = tf.reduce_mean(tf.square(y_-y))
-  cost_sum = tf.scalar_summary("cost", cost)
+  cost_sum = tf.summary.scalar("cost", cost)
 
 # Training using Gradient Descent to minimize cost
 with tf.name_scope("train") as scope:
