@@ -59,7 +59,7 @@ all_ys = np.transpose([all_ys])
 sess = tf.Session()
 
 # Merge all the summaries and write them out to /tmp/mnist_logs
-merged = tf.merge_all_summaries()
+merged = tf.summary.merge_all()
 writer = tf.train.SummaryWriter(log_file, sess.graph_def)
 
 init = tf.initialize_all_variables()

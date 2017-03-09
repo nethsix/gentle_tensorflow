@@ -28,7 +28,7 @@ with tf.name_scope("train") as scope:
 sess = tf.Session()
 
 # Merge all the summaries and write them out to logfile
-merged = tf.merge_all_summaries()
+merged = tf.summary.merge_all()
 writer = tf.train.SummaryWriter("/tmp/mnist_sgd_logs_20160404", sess.graph_def)
 
 init = tf.initialize_all_variables()
